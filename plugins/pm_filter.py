@@ -60,7 +60,16 @@ async def give_filter(client, message):
         if total_results == 0:
             return
         else:
-            return await message.reply_text(f"<b>👋 𝖧𝖾𝗒 {message.from_user.mention} \n📁 {str(total_results)} 𝖱𝖾𝗌𝗎𝗅𝗍𝗌 𝖺𝗋𝖾 𝖿𝗈𝗎𝗇𝖽 𝖿𝗈𝗋 𝗒𝗈𝗎𝗋 𝗊𝗎𝖾𝗋𝗒 {search}.\n\nKindly ask movies and series here ⬇\n@blaster_arena & @blaster_movies</b>")
+            buttons = InlineKeyboardMarkup(
+                [
+                    [InlineKeyboardButton("Ⓖ︎Ⓡ︎Ⓞ︎Ⓤ︎Ⓟ︎ 1", url="https://t.me/+4npck_4qKJ02YTg1")],
+                    [InlineKeyboardButton("Ⓖ︎Ⓡ︎Ⓞ︎Ⓤ︎Ⓟ︎ 2", url="https://t.me/+15MvzJmD49g4N2Q1")]
+                ]
+            )
+            await message.reply_text(
+                f"<b>👋 𝖧𝖾𝗒 {message.from_user.mention} \n📁 {str(total_results)} 𝖱𝖾𝗌𝗎𝗅𝗍𝗌 𝖺𝗋𝖾 𝖿𝗈𝗎𝗇𝖽 𝖿𝗈𝗋 𝗒𝗈𝗎𝗋 𝗊𝗎𝖾𝗋𝗒 {search}.\n\nKindly ask movies and series here ⬇</b>",
+                reply_markup=buttons
+            )
 
 @Client.on_message(filters.private & filters.text & filters.incoming)
 async def pv_filter(client, message):
