@@ -8,7 +8,7 @@ async def accept_request(client, r):
 
     rm = InlineKeyboardMarkup([[
         InlineKeyboardButton('⭕️ CHΛИИΞL ⭕️', url="https://t.me/isaimini_updates"),
-        InlineKeyboardButton('💠 SUᎮᎮԾᏒϮ GᏒԾUᎮ 💠', url=f"https://t.me/isaiminiprime_support}")
+        InlineKeyboardButton('💠 SUᎮᎮԾᏒϮ GᏒԾUᎮ 💠', url=f"https://t.me/isaiminiprime_support")
     ]])
     
     try:
