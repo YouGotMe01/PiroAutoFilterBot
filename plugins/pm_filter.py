@@ -956,8 +956,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
                     InlineKeyboardButton('⚚ ΛᎠᎠ MΞ ϮԾ YԾUᏒ GᏒԾUᎮ ⚚', url=f"http://t.me/{temp.U_NAME}?startgroup=true")
                 ],[
-                    InlineKeyboardButton('🛡 𝖮𝗐𝗇𝖾𝗋', callback_data="owner_info"),
-                    InlineKeyboardButton('🧩 𝖲𝗎𝗉𝗉𝗈𝗋𝗍 𝖦𝗋𝗈𝗎𝗉', url=f"https://t.me/{SUPPORT_CHAT}")
+                    InlineKeyboardButton('⭕️ CHΛИИΞL ⭕️', url="https://t.me/isaimini_updates"),
+                    InlineKeyboardButton('💠 SUᎮᎮԾᏒϮ GᏒԾUᎮ 💠', url=f"https://t.me/{SUPPORT_CHAT}")
+                ],[
+                    InlineKeyboardButton('🔗 MԾVIΞ SΞΛᏒCHIИG GᏒԾUᎮ LIИKS 🔗', url="https://t.me/isaimini_updates/110")
                 ],[
                     InlineKeyboardButton('♻️ HΞLᎮ ♻️', callback_data='help'),
                     InlineKeyboardButton('♻️ ΛBOUT ♻️', callback_data='about'),
@@ -1045,7 +1047,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ],[
             InlineKeyboardButton('🏘 𝖧𝗈𝗆𝖾', callback_data='start'),
             InlineKeyboardButton('❌ 𝖢𝗅𝗈𝗌𝖾', callback_data='close_data')
-        ]]
+        ],[
+            InlineKeyboardButton('👨‍💻 Contact Admin 👨‍💻', callback_data="owner_info")
+                  ]]
         await client.edit_message_media(
             query.message.chat.id, 
             query.message.id, 
@@ -1231,7 +1235,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "owner_info":
             btn = [[
                     InlineKeyboardButton("👩‍🦯 𝖡𝖺𝖼𝗄", callback_data="start"),
-                    InlineKeyboardButton("📞 𝖢𝗈𝗇𝗍𝖺𝖼𝗍", url=f"t.me/rithesh_rkrm_17")
+                    InlineKeyboardButton("📞 𝖢𝗈𝗇𝗍𝖺𝖼𝗍", url=f"t.me/isaiminiprime_admin")
                   ]]
             await client.edit_message_media(
                 query.message.chat.id, 
@@ -1251,7 +1255,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         if str(grp_id) != str(grpid):
             await query.message.edit("Your Active Connection Has Been Changed. Go To /settings.")
-            return await query.answer('𝖯𝗂𝗋𝖺𝖼𝗒 𝗂𝗌 𝖢𝗋𝗂𝗆𝖾 !')
+            return await query.answer('♻️ Please Share and Support ♻️')
 
         if status == "True":
             await save_group_settings(grpid, set_type, False)
@@ -1316,7 +1320,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ]
             reply_markup = InlineKeyboardMarkup(buttons)
             await query.message.edit_reply_markup(reply_markup)
-    await query.answer('𝖯𝗂𝗋𝖺𝖼𝗒 𝗂𝗌 𝖢𝗋𝗂𝗆𝖾 !')
+    await query.answer('♻️ Please Share and Support ♻️')
 
     
 async def auto_filter(client, msg, spoll=False):
