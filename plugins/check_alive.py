@@ -26,7 +26,7 @@ async def series(_, message):
 
 @Client.on_message(filters.command("donate", CMD))
 async def tutorial(_, message):
-    await message.reply_text("<b>If You Like Our Service Please Consider Donation, UPI ID and QR Code Available here👇\n\nClick ➠ @isaimini_donation \n--------------------------------------------\n<i>The smallest act of kindness is worth more than the grandest intention.</i>\n\n~ Oscar Wilde\n--------------------------------------------</b>")
+    await message.reply_text("<b>If You Like Our Service Please Consider Donation, UPI ID and QR Code Available here👇\n\nClick ➠ @isaimini_donation \n<i>The smallest act of kindness is worth more than the grandest intention.</i>\n\n~ Oscar Wilde\n</b>")
 
 @Client.on_message(filters.command("ping", CMD))
 async def ping(_, message):
