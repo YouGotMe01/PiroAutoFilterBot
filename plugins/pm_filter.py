@@ -3,7 +3,7 @@ import re
 import ast
 import math
 import random
-lock = asyncio.Lock()
+
 
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
 from Script import script
@@ -960,7 +960,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton('⚚ ΛᎠᎠ MΞ ϮԾ YԾUᏒ GᏒԾUᎮ ⚚', url=f"http://t.me/{temp.U_NAME}?startgroup=true")
                 ],[
                     InlineKeyboardButton('⭕️ CHΛИИΞL ⭕️', url="https://t.me/isaimini_updates"),
-                    InlineKeyboardButton('💠 SUᎮᎮԾᏒϮ GᏒԾUᎮ 💠', url=f"https://t.me/{SUPPORT_CHAT}")
+                    InlineKeyboardButton('💠 SUᎮᎮԾᏒϮ GᏒԾUᎮ 💠', url=f"https://t.me/isaiminiprime_support")
                 ],[
                     InlineKeyboardButton('🎬 MԾVIΞ SΞΛᏒCHIИG GᏒԾUᎮ LIИKS 🎬', url="https://t.me/isaimini_updates/110")
                 ],[
