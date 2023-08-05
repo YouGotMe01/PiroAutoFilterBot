@@ -28,11 +28,11 @@ class script(object):
 ║┣⪼ ✯ <b>𝙻𝙸𝙱𝚁𝙰𝚁𝚈: 𝙿𝚈𝚁𝙾𝙶𝚁𝙰𝙼</a></b>
 ║┣⪼ ✯ <b>𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴: 𝙿𝚈𝚃𝙷𝙾𝙽 𝟹</a></b>
 ║┣⪼ ✯ <b>𝙳𝙰𝚃𝙰 𝙱𝙰𝚂𝙴: 𝙼𝙾𝙽𝙶𝙾-𝙳𝙱</a></b>
-║┣⪼ ✯ <b>𝙱𝙾𝚃 𝚂𝙴𝚁𝚅𝙴𝚁: 𝙷𝙴𝚁𝙾𝙺𝚄</a></b>
+║┣⪼ ✯ <b>𝙱𝙾𝚃 𝚂𝙴𝚁𝚅𝙴𝚁: 𝙿𝙰𝙸𝙳 𝚂𝙴𝚁𝚅𝙴𝚁</a></b>
 ║┣⪼ ✯ <b>𝚂𝙾𝚄𝚁𝙲𝙴: 👉 <a href=https://t.me/isaimini_updates>𝙲𝙻𝙸𝙲𝙺 𝙷𝙴𝚁𝙴</a></b>
 ║┣⪼ ✯ <b>𝙱𝚄𝙸𝙻𝙳 𝚂𝚃𝙰𝚃𝚄𝚂: 𝚅1.0.43</b>
 ║┣⪼ ✯ <b>𝚄𝙿𝙳𝙰𝚃𝙴𝚂: <a href=https://t.me/isaimini_updates>𝐈𝐬𝐚𝐢𝐦𝐢𝐧𝐢 𝐔𝐩𝐝𝐚𝐭𝐞𝐬</a></b>
-║╰━━━━━━━〔<a href=https://t.me/+15MvzJmD49g4N2Q1>𝗠𝗼𝘃𝗶𝗲𝘀 𝗖𝗹𝘂𝗯</a>〕</b>"""
+║╰━━━━━━━〔<a href=https://t.me/isaimini_updates/110>𝗠𝗼𝘃𝗶𝗲𝘀 𝗖𝗹𝘂𝗯</a>〕</b>"""
 
     SOURCE_TXT = """<b>DISCLAIMER NOTE‼️:</b>
 - 𝗜𝘀𝗮𝗶𝗺𝗶𝗻𝗶 𝗣𝗿𝗶𝗺𝗲 😻  𝚒𝚜 𝚊𝚗 𝙾𝚙𝚎𝚗 𝚂𝚘𝚞𝚛𝚌𝚎 𝙿𝚛𝚘𝚓𝚎𝚌𝚝. All the files in this bot are freely available on the internet or posted by somebody else. This bot is indexing files which are already uploaded on Telegram for easy of searching, We respect all the copyright laws and works in compliance with DMCA and EUCD. If anything is against law please contact us so that it can be removed asap. It is forbidden to download, stream, reproduce, or by any means, share, or consume, content without explicit permission from the content creator or legal copyright holder. If you believe this bot is violating your intellectual property, contact the respective channels for removal. The Bot does not own any of these contents, it only index the files from telegram.. 
@@ -157,7 +157,7 @@ Request Again"""
 
     TOP_ALRT_MSG = """𝖢𝗁𝖾𝖼𝗄𝗂𝗇𝗀 𝖿𝗈𝗋 𝗊𝗎𝖾𝗋𝗒 𝗂𝗇 𝖣𝖺𝗍𝖺𝖻𝖺𝗌𝖾..."""
 
-    MELCOW_ENG = """<b>Hey {}, We are happy you made it to {} but first things first 👇</b> 
+    MELCOW_ENG = """<b>Hey {}, We Are Happy You Made it to {} But First Things First 👇</b> 
 
 • 𝖭𝗈 𝖯𝗋𝗈𝗆𝗈, 𝖭𝗈 𝖯𝗈𝗋𝗇, 𝖭𝗈 𝖮𝗍𝗁𝖾𝗋 𝖠𝖻𝗎𝗌𝖾𝗌
 • 𝖠𝗌𝗄 𝖸𝗈𝗎𝗋 𝖬𝗈𝗏𝗂𝖾𝗌 𝖶𝗂𝗍𝗁 𝖢𝗈𝗋𝗋𝖾𝖼𝗍 𝖲𝗉𝖾𝗅𝗅𝗂𝗇𝗀
@@ -176,8 +176,6 @@ Request Again"""
 
 ✅<b> If You Like Our Service, Please Consider Donation to Continue this Service. For Donation, 
      Click</b> ➠ /donate
-
-‼️𝗗𝗼𝗻𝘁 𝗮𝗱𝗱 𝘄𝗼𝗿𝗱𝘀 & 𝘀𝘆𝗺𝗯𝗼𝗹𝘀 𝗹𝗶𝗸𝗲 , . -  send link movie series 𝗲𝘁𝗰‼️
 
 <b>Share if you care : @Isaimini_updates or @Isaimini_Filter_bot</b>"""
 
