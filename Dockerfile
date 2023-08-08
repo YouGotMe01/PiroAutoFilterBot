@@ -10,6 +10,6 @@ WORKDIR /PiroAutoFilterBot
 
 COPY . .
 
-EXPOSE 8080
+EXPOSE 8000
 
 CMD ["python3", "bot.py"]
