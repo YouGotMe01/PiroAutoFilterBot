@@ -6,7 +6,7 @@ import asyncio
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram import Client, enums
 from typing import Union
-from bot import Bot
+#from bot import Bot
 import random 
 import re
 import os
