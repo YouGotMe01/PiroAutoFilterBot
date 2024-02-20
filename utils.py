@@ -448,7 +448,7 @@ async def add_chnl_message(item):
     final = item[:index].strip()
     if final not in update_list:
         update_list.append(final)
-        return await update_chnl_message(final)
+        return await update_chnl_message(Client, final)
     return
 
 
