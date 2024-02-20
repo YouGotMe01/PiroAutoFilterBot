@@ -4,9 +4,9 @@ from info import AUTH_CHANNEL, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM, CUSTOM_FILE_
 from imdb import Cinemagoer 
 import asyncio
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
-from pyrogram import Client, enums
+from pyrogram import enums
 from typing import Union
-from bot import Bot
+#from bot import Bot
 import random 
 import re
 import os
@@ -450,11 +450,6 @@ async def add_chnl_message(item):
         update_list.append(final)
         return await update_chnl_message(Bot, final)
     return
-
-
-async def update_chnl_message(Client, final):
-    cap = "New Update:\n\n"
-    return await Client.send_message(chat_id="UPDATES_CHNL", text=f"{cap} {final}")
 
 def humanbytes(size):
     if not size:
