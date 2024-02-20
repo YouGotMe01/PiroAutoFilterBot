@@ -449,8 +449,8 @@ async def add_chnl_message(item):
     final = item[:index].strip()
     if final not in update_list:
         update_list.append(final)
-        return await update_chnl_message(Bot, final)
-    return
+        return final
+    return None
 
 def humanbytes(size):
     if not size:
