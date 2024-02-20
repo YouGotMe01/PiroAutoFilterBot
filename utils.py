@@ -6,7 +6,7 @@ import asyncio
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram import Client, enums
 from typing import Union
-#from bot import Bot
+from bot import Bot
 import random 
 import re
 import os
@@ -448,14 +448,13 @@ async def add_chnl_message(item):
     final = item[:index].strip()
     if final not in update_list:
         update_list.append(final)
-        return await update_chnl_message(Client, final)
+        return await update_chnl_message(Bot, final)
     return
 
 
 async def update_chnl_message(Client, final):
     cap = "New Update:\n\n"
-    update = await Client.send_message(chat_id="UPDATES_CHNL", text=f"{cap} {final}")
-    return
+    return await Client.send_message(chat_id="UPDATES_CHNL", text=f"{cap} {final}")
 
 def humanbytes(size):
     if not size:
