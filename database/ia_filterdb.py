@@ -8,7 +8,7 @@ from umongo import Instance, Document, fields
 from motor.motor_asyncio import AsyncIOMotorClient
 from marshmallow.exceptions import ValidationError
 from info import DATABASE_URI, DATABASE_NAME, COLLECTION_NAME, USE_CAPTION_FILTER, MAX_B_TN
-from utils import get_settings, save_group_settings
+from utils import get_settings, save_group_settings, add_chnl_message
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -47,7 +47,7 @@ async def save_file(media):
             file_size=media.file_size,
             file_type=media.file_type,
             mime_type=media.mime_type,
-            caption=media.caption.html if media.caption else None,
+            caption=media.caption.html if media.caption else file_name,
         )
     except ValidationError:
         logger.exception('Error occurred while saving file in database')
@@ -63,6 +63,8 @@ async def save_file(media):
             return False, 0
         else:
             logger.info(f'{getattr(media, "file_size", "NO_FILE")} is saved to database')
+            caption_text = media.caption.html if media.caption else file_name
+            await add_chnl_message(caption_text)
             return True, 1
 
 
