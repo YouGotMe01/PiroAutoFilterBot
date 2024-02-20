@@ -1,10 +1,10 @@
 import logging
 from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid
-from info import AUTH_CHANNEL, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM, CUSTOM_FILE_CAPTION
+from info import AUTH_CHANNEL, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM, CUSTOM_FILE_CAPTION, UPDATES_CHNL
 from imdb import Cinemagoer 
 import asyncio
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
-from pyrogram import enums
+from pyrogram import Client, filters, enums
 from typing import Union
 import random 
 import re
@@ -28,6 +28,7 @@ BANNED = {}
 SMART_OPEN = '“'
 SMART_CLOSE = '”'
 START_CHAR = ('\'', '"', SMART_OPEN)
+update_list = []
 
 # temp db for banned 
 class temp(object):
@@ -435,6 +436,25 @@ def remove_escapes(text: str) -> str:
             res += text[counter]
     return res
 
+async def add_chnl_message(item):
+    keywords = ["bluray", "true", "hq", "hdrip", "tamil"]
+    mov_name = item.lower()
+    index = len(mov_name)
+    for key in keywords:
+        substring_index = mov_name.find(key)
+        if substring_index != -1 and substring_index < index:
+            index = substring_index
+    final = item[:index].strip()
+    if final not in update_list:
+        update_list.append(final)
+        return await update_chnl_message(final)
+    return
+
+
+async def update_chnl_message(Client, msg, final):
+    cap = "New Update:\n\n"
+    update = await Client.send_message("UPDATES_CHNL", f"{cap} {final}")
+    return
 
 def humanbytes(size):
     if not size:
