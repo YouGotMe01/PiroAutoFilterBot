@@ -438,7 +438,7 @@ def remove_escapes(text: str) -> str:
     return res
 
 async def add_chnl_message(item):
-    keywords = ["bluray", "true", "hq", "hdrip", "tamil"]
+    keywords = ["bluray", "true", "hq", "hdrip", "br-rip", "bdrip", "720p", "1080p", "e0", "e1", "e2", "e3"]
     mov_name = item.lower()
     index = len(mov_name)
     for key in keywords:
