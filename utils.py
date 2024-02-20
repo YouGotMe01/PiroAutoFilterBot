@@ -4,8 +4,9 @@ from info import AUTH_CHANNEL, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM, CUSTOM_FILE_
 from imdb import Cinemagoer 
 import asyncio
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
-from pyrogram import Client, filters, enums
+from pyrogram import enums
 from typing import Union
+from bot import Bot
 import random 
 import re
 import os
@@ -451,7 +452,7 @@ async def add_chnl_message(item):
     return
 
 
-async def update_chnl_message(Client, msg, final):
+async def update_chnl_message(Client, final):
     cap = "New Update:\n\n"
     update = await Client.send_message("UPDATES_CHNL", f"{cap} {final}")
     return
