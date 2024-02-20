@@ -21,5 +21,5 @@ async def media(bot, message):
     if text is not None:
         final = await add_chnl_message(text)
         if final is not None:
-            cap = "New Update:\n\n"
-            await bot.send_message(chat_id=UPDATES_CHNL, text=f"{cap} {final}")
+            cap = "New Movie Update:\n\n"
+            await bot.send_message(chat_id=UPDATES_CHNL, text=f"{cap}<code>{final}</code>", parse_mode=enums.ParseMode.HTML)
