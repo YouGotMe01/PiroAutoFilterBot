@@ -454,7 +454,7 @@ async def add_chnl_message(item):
 
 async def update_chnl_message(Client, final):
     cap = "New Update:\n\n"
-    update = await Client.send_message(chat_id=UPDATES_CHNL, text=f"{cap} {final}")
+    update = await Client.send_message(chat_id="UPDATES_CHNL", text=f"{cap} {final}")
     return
 
 def humanbytes(size):
