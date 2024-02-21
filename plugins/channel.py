@@ -22,4 +22,4 @@ async def media(bot, message):
         final = await add_chnl_message(text)
         if final is not None:
             cap = "#MovieUpdate:\n\n"
-            await bot.send_message(chat_id=UPDATES_CHNL, text=f"{cap}<code>{final}</code>\n\nCopy & Paste In Group To Search\n\n<a href=https://t.me/isaimini_updates/110>]|I{•---» ᴍᴏᴠɪᴇ sᴇᴀʀᴄʜɪɴɢ ɢʀᴏᴜᴘ ʟɪɴᴋs «---•}I|[</a>", parse_mode=enums.ParseMode.HTML)
+            await bot.send_message(chat_id=UPDATES_CHNL, text=f"{cap}<code>{final}</code>\n\nCopy & Paste In Group To Search\n<a href=https://t.me/isaimini_updates/110>---» ᴍᴏᴠɪᴇ sᴇᴀʀᴄʜɪɴɢ ɢʀᴏᴜᴘ ʟɪɴᴋs «---</a>", parse_mode=enums.ParseMode.HTML)
