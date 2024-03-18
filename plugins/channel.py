@@ -1,6 +1,7 @@
 import asyncio
 from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
 from info import CHANNELS, UPDATES_CHNL
 from database.ia_filterdb import save_file
 from utils import add_chnl_message, get_poster, temp
@@ -42,13 +43,22 @@ async def media(bot, message):
             markup = InlineKeyboardMarkup(btn)
             if movies and movies.get('poster'):
                 await asyncio.sleep(10)
-                await bot.send_photo(
-                    chat_id=UPDATES_CHNL,
-                    photo=movies.get('poster'),
-                    caption=cap,
-                    reply_markup=markup,
-                    parse_mode=enums.ParseMode.HTML
-                )
+                try:
+                    await bot.send_photo(
+                        chat_id=UPDATES_CHNL,
+                        photo=movies.get('poster'),
+                        caption=cap,
+                        reply_markup=markup,
+                        parse_mode=enums.ParseMode.HTML
+                    )
+                except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
+                    await bot.send_message(
+                        chat_id=UPDATES_CHNL,
+                        text=cap,
+                        disable_web_page_preview=True,
+                        reply_markup=markup,
+                        parse_mode=enums.ParseMode.HTML
+                    )
             else:
                 await asyncio.sleep(10)
                 await bot.send_message(
