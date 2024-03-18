@@ -22,12 +22,17 @@ async def media(bot, message):
     if text is not None:
         movie_name, year, languages = await add_chnl_message(text)
         if movie_name is not None:
-            mozhi = ", ".join(languages)
-            cap = f"<b>#MovieUpdate:\n\n🧿 <u>𝚃𝙸𝚃𝙻𝙴</u> : <code>{movie_name}</code>\n📆 <u>𝚁𝙴𝙻𝙴𝙰𝚂𝙴</u> : {year}🎙️<u>𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴</u> : {mozhi}\n\nCopy & Paste In Group To Search\n---»<a href=https://t.me/isaimini_updates/110> ᴍᴏᴠɪᴇ sᴇᴀʀᴄʜɪɴɢ ɢʀᴏᴜᴘ ʟɪɴᴋs </a>«---</b>"
+            mozhi = " ".join(languages)
+            if mozhi is None:
+                cap = f"<b>#MovieUpdate:\n🧿 <u>𝚃𝙸𝚃𝙻𝙴</u> : <code>{movie_name}</code>\n📆 <u>𝚁𝙴𝙻𝙴𝙰𝚂𝙴</u> : {year}\n\nCopy & Paste In Group To Search\n---»<a href=https://t.me/isaimini_updates/110> ᴍᴏᴠɪᴇ sᴇᴀʀᴄʜɪɴɢ ɢʀᴏᴜᴘ ʟɪɴᴋs </a>«---</b>"
+            elif year is None:
+                cap = f"<b>#MovieUpdate:\n🧿 <u>𝚃𝙸𝚃𝙻𝙴</u> : <code>{movie_name}</code>\n🎙️<u>𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴</u> : {mozhi}\n\nCopy & Paste In Group To Search\n---»<a href=https://t.me/isaimini_updates/110> ᴍᴏᴠɪᴇ sᴇᴀʀᴄʜɪɴɢ ɢʀᴏᴜᴘ ʟɪɴᴋs </a>«---</b>"            
+            else:
+                cap = f"<b>#MovieUpdate:\n🧿 <u>𝚃𝙸𝚃𝙻𝙴</u> : <code>{movie_name}</code>\n📆 <u>𝚁𝙴𝙻𝙴𝙰𝚂𝙴</u> : {year}\n🎙️<u>𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴</u> : {mozhi}\n\nCopy & Paste In Group To Search\n---»<a href=https://t.me/isaimini_updates/110> ᴍᴏᴠɪᴇ sᴇᴀʀᴄʜɪɴɢ ɢʀᴏᴜᴘ ʟɪɴᴋs </a>«---</b>"
             search = f"{movie_name} {year}"
             movies = await get_poster(search)
             btn = [[
-                InlineKeyboardButton('📥 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃 𝐍𝐎𝐖 📥', url=f"http://t.me/{temp.U_NAME}?start")
+                InlineKeyboardButton('◦•●◉✿📥 ᴅᴏᴡɴʟᴏᴀᴅ ɴᴏᴡ 📥✿◉●•◦', url=f"http://t.me/{temp.U_NAME}?start")
             ]]
             markup = InlineKeyboardMarkup(btn)
             if movies and movies.get('poster'):
