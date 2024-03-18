@@ -1,3 +1,4 @@
+import asyncio
 from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from info import CHANNELS, UPDATES_CHNL
@@ -36,6 +37,7 @@ async def media(bot, message):
             ]]
             markup = InlineKeyboardMarkup(btn)
             if movies and movies.get('poster'):
+                await asyncio.sleep(10)
                 await bot.send_photo(
                     chat_id=UPDATES_CHNL,
                     photo=movies.get('poster'),
@@ -44,6 +46,7 @@ async def media(bot, message):
                     parse_mode=enums.ParseMode.HTML
                 )
             else:
+                await asyncio.sleep(10)
                 await bot.send_message(
                     chat_id=UPDATES_CHNL,
                     text=cap,
