@@ -130,10 +130,7 @@ async def start(client, message):
         file_id = data
         pre = ""
         
-    if data.startswith('search'):
-        _, key = data.split("#", 1)
-        m_name = search.replace("_", " ")
-        await pv_filter(client, m_name)
+    
     
     if data.split("-", 1)[0] == "BATCH":
         sts = await message.reply("<b>Please wait...</b>")
