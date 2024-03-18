@@ -36,7 +36,6 @@ async def media(bot, message):
                     photo=movies.get('poster'),
                     caption=cap,
                     reply_markup=markup,
-                    disable_web_page_preview=True,
                     parse_mode=enums.ParseMode.HTML
                 )
             else:
@@ -44,5 +43,6 @@ async def media(bot, message):
                     chat_id=UPDATES_CHNL,
                     text=cap,
                     disable_web_page_preview=True,
+                    reply_markup=markup,
                     parse_mode=enums.ParseMode.HTML
                 )
