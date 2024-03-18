@@ -440,10 +440,8 @@ def remove_escapes(text: str) -> str:
 async def add_chnl_message(file_name):
     pattern = [
         (r'^([\w\s-]+)\sS\d{2}\s?(E(P|p)|E)\d{2}\s'),
-        (r'^(.*?)\s(\d{4})\s.*?(\.mkv)$'),
-        (r'^(.*?)\.(\d{4})\..*?(\.mkv)$'),
-        (r'^(.*?)\_(\d{4})\_.*?(\.mkv)$')
-     ]
+        (r'^(.*?)\s(\d{4})\s.*?(\.mkv)$')]
+    
     for pat in pattern:
         match = re.match(pat, file_name)
         if match:
@@ -465,9 +463,10 @@ async def add_chnl_message(file_name):
                     return None, None, None
             if len(list1) >= 1:
                 update_list.add((movie_name, list1[0]))
+                return movie_name, year, list1
             else:
                 update_list.add((movie_name, 'No Lang'))
-            return movie_name, year, list1
+                return movie_name, year, None
     else:
         return None, None, None
 
