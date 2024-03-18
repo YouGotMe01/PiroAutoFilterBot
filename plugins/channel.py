@@ -30,10 +30,14 @@ async def media(bot, message):
                 cap = f"<b>#MovieUpdate:\n🧿 <u>𝚃𝙸𝚃𝙻𝙴</u> : <code>{movie_name}</code>\n🎙️<u>𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴</u> : {mozhi}\n\nCopy & Paste In Group To Search\n---»<a href=https://t.me/isaimini_updates/110> ᴍᴏᴠɪᴇ sᴇᴀʀᴄʜɪɴɢ ɢʀᴏᴜᴘ ʟɪɴᴋs </a>«---</b>"            
             else:
                 cap = f"<b>#MovieUpdate:\n🧿 <u>𝚃𝙸𝚃𝙻𝙴</u> : <code>{movie_name}</code>\n📆 <u>𝚁𝙴𝙻𝙴𝙰𝚂𝙴</u> : {year}\n🎙️<u>𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴</u> : {mozhi}\n\nCopy & Paste In Group To Search\n---»<a href=https://t.me/isaimini_updates/110> ᴍᴏᴠɪᴇ sᴇᴀʀᴄʜɪɴɢ ɢʀᴏᴜᴘ ʟɪɴᴋs </a>«---</b>"
-            search = f"{movie_name} {year}"
+            if year is not None:
+                search = f"{movie_name} {year}"
+            else:
+                search = f"{movie_name}"
             movies = await get_poster(search)
+            search_with_underscore = search.replace(" ", "_")
             btn = [[
-                InlineKeyboardButton('◦•●◉✿📥 ᴅᴏᴡɴʟᴏᴀᴅ ɴᴏᴡ 📥✿◉●•◦', url=f"http://t.me/{temp.U_NAME}?start")
+                InlineKeyboardButton('◦•●◉✿📥 ᴅᴏᴡɴʟᴏᴀᴅ ɴᴏᴡ 📥✿◉●•◦', url=f"http://t.me/{temp.U_NAME}?start=search#{search_with_underscore}")
             ]]
             markup = InlineKeyboardMarkup(btn)
             if movies and movies.get('poster'):
