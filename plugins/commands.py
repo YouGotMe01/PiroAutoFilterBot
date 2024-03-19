@@ -6,12 +6,11 @@ from Script import script
 from pyrogram import Client, filters, enums
 from pyrogram.errors import ChatAdminRequired, FloodWait
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from database.ia_filterdb import Media, get_file_details, unpack_new_file_id, get_bad_files
+from database.ia_filterdb import Media, get_file_details, unpack_new_file_id, get_bad_files, get_search_results
 from database.users_chats_db import db
 from info import CHANNELS, ADMINS, AUTH_CHANNEL, LOG_CHANNEL, PICS, BATCH_FILE_CAPTION, CUSTOM_FILE_CAPTION, SUPPORT_CHAT, PROTECT_CONTENT, REQST_CHANNEL, SUPPORT_CHAT_ID, MAX_B_TN
 from utils import get_settings, get_size, is_subscribed, save_group_settings, temp
 from database.connections_mdb import active_connection
-from plugins.pm_filter import pv_filter
 import re
 import json
 import base64
@@ -124,13 +123,48 @@ async def start(client, message):
         )
         return
     data = message.command[1]
+    if data.startswith("search"):
+        _, search = data.split("#", 1)
+        mtemp = search.replace(" ", "_")
+        mov_name = mtemp.text
+        files, n_offset, total = await get_search_results(0, query=mov_name.lower(), offset=0, filter=True)
+        if int(total) != 0:
+                btn = [[
+            InlineKeyboardButton(']|I{•------» 𝐌𝐨𝐯𝐢𝐞 𝐒𝐞𝐚𝐫𝐜𝐡𝐢𝐧𝐠 𝐆𝐫𝐨𝐮𝐩 𝐋𝐢𝐧𝐤𝐬 «------•}I|[', url="https://t.me/isaimini_updates/110")
+        ]]
+                return await message.reply_text(f'<b>👋 𝖧𝖾𝗒 {message.from_user.mention},\n📁 {str(total)} 𝖱𝖾𝗌𝗎𝗅𝗍𝗌 𝖺𝗋𝖾 𝖿𝗈𝗎𝗇𝖽 𝖿𝗈𝗋 𝗒𝗈𝗎𝗋 𝗊𝗎𝖾𝗋𝗒 {mov_name}.\n\nKindly ask movies or series in Movie Request Groups, Links available here ⬇</b>"', reply_markup=InlineKeyboardMarkup(btn), quote=True)
+
     try:
         pre, file_id = data.split('_', 1)
     except:
         file_id = data
         pre = ""
         
-    
+    if data.startswith("all"):
+        _, key, pre = data.split("_", 2)
+        files = temp.FILES_IDS.get(key)
+        if not files:
+            return await message.reply('<b><i>No such file exist.</b></i>')
+        
+        for file in files:
+            title = file.file_name
+            size=get_size(file.file_size)
+            f_caption=file.caption
+            if CUSTOM_FILE_CAPTION:
+                try:
+                    f_caption=CUSTOM_FILE_CAPTION.format(file_name= '' if title is None else title, file_size='' if size is None else size, file_caption='' if f_caption is None else f_caption)
+                except:
+                    f_caption=f_caption
+            if f_caption is None:
+                f_caption = f"{file.file_name}"
+            await client.send_cached_media(
+                chat_id=message.from_user.id,
+                file_id=file.file_id,
+                caption=f_caption,
+                protect_content=True if pre == 'filep' else False,
+                reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton('⚔️ 𝖯𝖨𝖱𝖮 𝖴𝖯𝖣𝖠𝖳𝖤𝖲 ⚔️', url=f"https://t.me/piroxbots") ] ] ),
+            )
+        return
     
     if data.split("-", 1)[0] == "BATCH":
         sts = await message.reply("<b>Please wait...</b>")
