@@ -152,22 +152,21 @@ async def start(client, message):
         ])
         if offset != "":
             try:
-                if settings['max_btn']:
-                    btn.append(
-                        [
-                    InlineKeyboardButton('✅ 🅓🅞🅝🅐🅣🅔 🅤🅢 ✅', url='https://t.me/isaimini_donation/5')
-                ])
                 btn.append(
-                    [InlineKeyboardButton("📃", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/10)}",callback_data="pages"), InlineKeyboardButton(text="𝖭𝖤𝖷𝖳 ▶️",callback_data=f"next_{req}_{key}_{offset}")]
-                )
+                    [
+                InlineKeyboardButton('✅ 🅓🅞🅝🅐🅣🅔 🅤🅢 ✅', url='https://t.me/isaimini_donation/5')
+            ])
+            btn.append(
+                [InlineKeyboardButton("📃", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/10)}",callback_data="pages"), InlineKeyboardButton(text="𝖭𝖤𝖷𝖳 ▶️",callback_data=f"next_{req}_{key}_{offset}")]
+            )
             except KeyError:
                 btn.append(
                     [
                 InlineKeyboardButton('✅ 🅓🅞🅝🅐🅣🅔 🅤🅢 ✅', url='https://t.me/isaimini_donation/5')
-                    ])
-                btn.append(
-                    [InlineKeyboardButton("📃", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/int(MAX_B_TN))}",callback_data="pages"), InlineKeyboardButton(text="𝖭𝖤𝖷𝖳 ▶️",callback_data=f"next_{req}_{key}_{offset}")]
-                    )
+            ])
+            btn.append(
+                [InlineKeyboardButton("📃", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/10)}",callback_data="pages"), InlineKeyboardButton(text="𝖭𝖤𝖷𝖳 ▶️",callback_data=f"next_{req}_{key}_{offset}")]
+            )
         else:
             btn.append(
                 [
