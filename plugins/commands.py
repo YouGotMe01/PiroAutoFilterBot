@@ -123,10 +123,9 @@ async def start(client, message):
         )
         return
     data = message.command[1]
-    if data.startswith("search"):
-        _, search = data.split("#", 1)
-        mtemp = search.replace("_", " ")
-        mov_name = mtemp.text
+    if data.split("#", 1)[0] == "search":
+        search = data.split("#", 1)[1]
+        mov_name = search.replace("_", " ")
         files, n_offset, total = await get_search_results(0, query=mov_name.lower(), offset=0, filter=True)
         if int(total) != 0:
                 btn = [[
