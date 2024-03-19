@@ -138,6 +138,7 @@ async def start(client, message):
                 ),
             ]
             for file in files
+        ]
         btn.insert(0, 
             [
                 InlineKeyboardButton(f'📟 𝖥𝗂𝗅𝖾𝗌: {len(files)}', 'dupe'),
