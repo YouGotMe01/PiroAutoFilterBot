@@ -8,7 +8,7 @@ from pyrogram.errors import ChatAdminRequired, FloodWait
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from database.ia_filterdb import Media, get_file_details, unpack_new_file_id, get_bad_files, get_search_results
 from database.users_chats_db import db
-from info import CHANNELS, ADMINS, AUTH_CHANNEL, LOG_CHANNEL, PICS, BATCH_FILE_CAPTION, CUSTOM_FILE_CAPTION, SUPPORT_CHAT, PROTECT_CONTENT, REQST_CHANNEL, SUPPORT_CHAT_ID, MAX_B_TN
+from info import CHANNELS, ADMINS, AUTH_CHANNEL, LOG_CHANNEL, PICS, BATCH_FILE_CAPTION, CUSTOM_FILE_CAPTION, SUPPORT_CHAT, PROTECT_CONTENT, REQST_CHANNEL, SUPPORT_CHAT_ID, MAX_B_TN, NOR_IMG
 from utils import get_settings, get_size, is_subscribed, save_group_settings, temp
 from database.connections_mdb import active_connection
 import re
@@ -123,7 +123,7 @@ async def start(client, message):
         )
         return
     data = message.command[1]
-    if data.split("-", 1)[0] == "search":
+    if data.split("-", 1)[0] == "SEARCH":
         title = data.split("-", 1)[1]
         mov_name = title.replace("_", " ")
         req = message.from_user.id if message.from_user else 0
@@ -150,23 +150,23 @@ async def start(client, message):
             InlineKeyboardButton(f'🎬 {mov_name} 🎬', 'rkbtn')
         ])
         if offset != "":
-        try:
-            if settings['max_btn']:
+            try:
+                if settings['max_btn']:
+                    btn.append(
+                        [
+                    InlineKeyboardButton('✅ 🅓🅞🅝🅐🅣🅔 🅤🅢 ✅', url='https://t.me/isaimini_donation/5')
+                ])
+                btn.append(
+                    [InlineKeyboardButton("📃", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/10)}",callback_data="pages"), InlineKeyboardButton(text="𝖭𝖤𝖷𝖳 ▶️",callback_data=f"next_{req}_{key}_{offset}")]
+                )
+            except KeyError:
                 btn.append(
                     [
                 InlineKeyboardButton('✅ 🅓🅞🅝🅐🅣🅔 🅤🅢 ✅', url='https://t.me/isaimini_donation/5')
-            ])
-            btn.append(
-                [InlineKeyboardButton("📃", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/10)}",callback_data="pages"), InlineKeyboardButton(text="𝖭𝖤𝖷𝖳 ▶️",callback_data=f"next_{req}_{key}_{offset}")]
-            )
-        except KeyError:
-            btn.append(
-                [
-            InlineKeyboardButton('✅ 🅓🅞🅝🅐🅣🅔 🅤🅢 ✅', url='https://t.me/isaimini_donation/5')
-                ])
-            btn.append(
-                [InlineKeyboardButton("📃", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/int(MAX_B_TN))}",callback_data="pages"), InlineKeyboardButton(text="𝖭𝖤𝖷𝖳 ▶️",callback_data=f"next_{req}_{key}_{offset}")]
-                )
+                    ])
+                btn.append(
+                    [InlineKeyboardButton("📃", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/int(MAX_B_TN))}",callback_data="pages"), InlineKeyboardButton(text="𝖭𝖤𝖷𝖳 ▶️",callback_data=f"next_{req}_{key}_{offset}")]
+                    )
         else:
             btn.append(
                 [
