@@ -11,7 +11,6 @@ from database.users_chats_db import db
 from info import CHANNELS, ADMINS, AUTH_CHANNEL, LOG_CHANNEL, PICS, BATCH_FILE_CAPTION, CUSTOM_FILE_CAPTION, SUPPORT_CHAT, PROTECT_CONTENT, REQST_CHANNEL, SUPPORT_CHAT_ID, MAX_B_TN
 from utils import get_settings, get_size, is_subscribed, save_group_settings, temp
 from database.connections_mdb import active_connection
-from plugins.pm_filter import pv_filter
 import re
 import json
 import base64
@@ -125,9 +124,60 @@ async def start(client, message):
         return
     data = message.command[1]
     if data.split("-", 1)[0] == "search":
-        search = data.split("-", 1)[1]
-        mov_name = search.replace("_", " ")
-        await pv_filter(client, mov_name)
+        title = data.split("-", 1)[1]
+        mov_name = title.replace("_", " ")
+        req = message.from_user.id if message.from_user else 0
+        cap = f"<b>😻 𝖧𝖾𝗅𝗅𝗈 {message.from_user.mention}\n📂 𝖸𝗈𝗎𝗋 𝖥𝗂𝗅𝖾𝗌 𝖠𝗋𝖾 𝖱𝖾𝖺𝖽𝗒\n\n</b>♨️ 𝐁𝐫𝐨𝐮𝐠𝐡𝐭 𝐓𝐨 𝐘𝐨𝐮 𝐁𝐲:- <a href=https://t.me/isaimini_updates>❤️ 𝗜𝘀𝗮𝗶𝗺𝗶𝗻𝗶 𝗣𝗿𝗶𝗺𝗲 ❤️</a></b>"
+        files, offset, total_results = await get_search_results(message.chat.id ,search.lower(), offset=0, filter=True)
+        if not files:
+            return
+        btn = [
+            [
+                InlineKeyboardButton(
+                   text=f"📂{get_size(file.file_size)} 🎥{file.file_name}", callback_data=f'{pre}#{file.file_id}'
+                ),
+            ]
+            for file in files
+        btn.insert(0, 
+            [
+                InlineKeyboardButton(f'📟 𝖥𝗂𝗅𝖾𝗌: {len(files)}', 'dupe'),
+                InlineKeyboardButton(f'📮 Info', 'tips'),
+                InlineKeyboardButton(f'🎁 𝖳𝗂𝗉𝗌', 'info')
+            ]
+            )
+        btn.insert(0, [
+            InlineKeyboardButton(f'🎬 {mov_name} 🎬', 'rkbtn')
+        ])
+        if offset != "":
+        try:
+            if settings['max_btn']:
+                btn.append(
+                    [
+                InlineKeyboardButton('✅ 🅓🅞🅝🅐🅣🅔 🅤🅢 ✅', url='https://t.me/isaimini_donation/5')
+            ])
+            btn.append(
+                [InlineKeyboardButton("📃", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/10)}",callback_data="pages"), InlineKeyboardButton(text="𝖭𝖤𝖷𝖳 ▶️",callback_data=f"next_{req}_{key}_{offset}")]
+            )
+        except KeyError:
+            btn.append(
+                [
+            InlineKeyboardButton('✅ 🅓🅞🅝🅐🅣🅔 🅤🅢 ✅', url='https://t.me/isaimini_donation/5')
+                ])
+            btn.append(
+                [InlineKeyboardButton("📃", callback_data="pages"), InlineKeyboardButton(text=f"1/{math.ceil(int(total_results)/int(MAX_B_TN))}",callback_data="pages"), InlineKeyboardButton(text="𝖭𝖤𝖷𝖳 ▶️",callback_data=f"next_{req}_{key}_{offset}")]
+                )
+        else:
+            btn.append(
+                [
+                InlineKeyboardButton('✅ 🅓🅞🅝🅐🅣🅔 🅤🅢 ✅', url='https://t.me/isaimini_donation/5')
+                ])
+            btn.append(
+                [InlineKeyboardButton(text="❌ 𝖭𝗈 𝖬𝗈𝗋𝖾 𝖯𝖺𝗀𝖾𝗌 𝖠𝗏𝖺𝗂𝗅𝖺𝖻𝗅𝖾 ! ❌",callback_data="pages")]
+            )
+        fuk = await message.reply_photo(photo=NOR_IMG, caption=cap, reply_markup=InlineKeyboardMarkup(btn))
+        await asyncio.sleep(60)
+        await hehe.delete()
+        await message.delete()
 
     
     try:
