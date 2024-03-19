@@ -125,7 +125,7 @@ async def start(client, message):
     data = message.command[1]
     if data.startswith("search"):
         _, search = data.split("#", 1)
-        mtemp = search.replace(" ", "_")
+        mtemp = search.replace("_", " ")
         mov_name = mtemp.text
         files, n_offset, total = await get_search_results(0, query=mov_name.lower(), offset=0, filter=True)
         if int(total) != 0:
