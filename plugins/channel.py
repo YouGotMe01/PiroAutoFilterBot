@@ -38,7 +38,7 @@ async def media(bot, message):
             movies = await get_poster(search)
             search_with_underscore = search.replace(" ", "_")
             btn = [[
-                InlineKeyboardButton('◦•●◉✿📥 ᴅᴏᴡɴʟᴏᴀᴅ ɴᴏᴡ 📥✿◉●•◦', url=f"http://t.me/{temp.U_NAME}?start=search-{search_with_underscore}")
+                InlineKeyboardButton('◦•●◉✿📥 ᴅᴏᴡɴʟᴏᴀᴅ ɴᴏᴡ 📥✿◉●•◦', url=f"http://t.me/{temp.U_NAME}?start=SEARCH-{search_with_underscore}")
             ]]
             markup = InlineKeyboardMarkup(btn)
             if movies and movies.get('poster'):
