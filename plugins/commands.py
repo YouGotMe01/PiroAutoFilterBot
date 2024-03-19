@@ -175,7 +175,7 @@ async def start(client, message):
             btn.append(
                 [InlineKeyboardButton(text="❌ 𝖭𝗈 𝖬𝗈𝗋𝖾 𝖯𝖺𝗀𝖾𝗌 𝖠𝗏𝖺𝗂𝗅𝖺𝖻𝗅𝖾 ! ❌",callback_data="pages")]
             )
-        fuk = await message.reply_photo(photo=NOR_IMG, caption=cap, reply_markup=InlineKeyboardMarkup(btn))
+        fuk = await message.reply_photo(photo=NOR_IMG, caption=cap, quote=True, reply_markup=InlineKeyboardMarkup(btn))
         await asyncio.sleep(60)
         await fuk.delete()
         await message.delete()
