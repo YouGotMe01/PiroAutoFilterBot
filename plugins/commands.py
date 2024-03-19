@@ -177,7 +177,7 @@ async def start(client, message):
             )
         fuk = await message.reply_photo(photo=NOR_IMG, caption=cap, reply_markup=InlineKeyboardMarkup(btn))
         await asyncio.sleep(60)
-        await hehe.delete()
+        await fuk.delete()
         await message.delete()
 
     
