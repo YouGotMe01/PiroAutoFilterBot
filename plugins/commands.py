@@ -183,6 +183,7 @@ async def start(client, message):
         await asyncio.sleep(60)
         await fuk.delete()
         await message.delete()
+        return
 
     
     try:
