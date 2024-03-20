@@ -62,4 +62,4 @@ async def media(bot, message):
                     reply_markup=markup,
                     parse_mode=enums.ParseMode.HTML
                 )
-            await asyncio.sleep(5)
+            #await asyncio.sleep(5)
