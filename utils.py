@@ -455,18 +455,11 @@ async def add_chnl_message(file_name):
                 if substring_index != -1:
                     capitalized_lang = lang.capitalize()
                     list1.append(capitalized_lang.strip())
-            if len(list1) >= 1:
-                if (movie_name, list1[0]) in update_list:
-                    return None, None, None
-            else:
-                if (movie_name, 'No Lang') in update_list:
-                    return None, None, None
-            if len(list1) >= 1:
-                update_list.add((movie_name, list1[0]))
-                return movie_name, year, list1
-            else:
-                update_list.add((movie_name, 'No Lang'))
-                return movie_name, year, None
+            if (movie_name, tuple(list1)) in update_list:
+                return None, None, None
+            # Add the (movie_name, list1) pair to the set of seen movies
+            update_list.add((movie_name, tuple(list1)))
+            return movie_name, year, list1
     else:
         return None, None, None
 
