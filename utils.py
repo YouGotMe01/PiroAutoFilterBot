@@ -437,7 +437,7 @@ def remove_escapes(text: str) -> str:
             res += text[counter]
     return res
 
-async def add_chnl_message(file_name):
+def add_chnl_message(file_name):
     pattern = [
         (r'^([\w\s-]+)\sS\d{2}\s?(E(P|p)|E)\d{2}\s'),
         (r'^(.*?)\s(\d{4})\s.*?(\.mkv)$')]
