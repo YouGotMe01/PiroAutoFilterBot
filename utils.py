@@ -439,10 +439,12 @@ def remove_escapes(text: str) -> str:
 
 async def add_chnl_message(file_name):
     pattern = [
-        (r'^(.*?)\s(\d{4})\s.*?(\.mkv)$'),
-        (r'^([\w\s-]+)\sS\d{2}\s?(E(P|p)|E)\d{2}\s')
-    ]
+        (r'^([\w\s-]+)\sS\d{2}\s?(E(P|p)|E)\d{2}\s'),
+        (r'^([\w\.-]+)\.S\d{2}\.?(E(P|p)|E)\d{2}\.'),
+        (r'^(.*?)\.(\d{4})\..*?(mkv)$'),
+        (r'^(.*?)\s(\d{4})\s.*?(mkv)$')]
     
+    indi = 0
     for pat in pattern:
         match = re.match(pat, file_name)
         if match:
@@ -459,11 +461,19 @@ async def add_chnl_message(file_name):
             logger.info(
                 f'{movie_name} {year} - STEP 1'
             )
-            if (movie_name, tuple(list1)) in update_list:
-                return None, None, None
-            # Add the (movie_name, list1) pair to the set of seen movies
-            update_list.add((movie_name, tuple(list1)))
-            return movie_name, year, list1
+            if len(list1) >= 1:
+                if (movie_name, list1[0]) in update_list:
+                    return None, None, None
+            else:
+                if (movie_name, 'No Lang') in update_list:
+                    return None, None, None
+            if len(list1) >= 1:
+                update_list.add((movie_name, list1[0]))
+                return movie_name, year, list1
+            else:
+                update_list.add((movie_name, 'No Lang'))
+                return movie_name, year, None
+        indi++
     else:
         return None, None, None
 
