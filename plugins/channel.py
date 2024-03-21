@@ -28,7 +28,7 @@ async def media(bot, message):
     if text is not None:
         movie_name, year, languages = await add_chnl_message(text)
         logger.info(
-                f'{movie_name} {year}} - STEP 2'
+                f'{movie_name} {year} - STEP 2'
             )
         if movie_name is not None:
             languages_str = " ".join(languages) if languages else None
