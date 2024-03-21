@@ -444,7 +444,6 @@ async def add_chnl_message(file_name):
         (r'^(.*?)\.(\d{4})\..*?(mkv)$'),
         (r'^(.*?)\s(\d{4})\s.*?(mkv)$')]
     
-    indi = 0
     for pat in pattern:
         match = re.match(pat, file_name)
         if match:
@@ -473,7 +472,6 @@ async def add_chnl_message(file_name):
             else:
                 update_list.add((movie_name, 'No Lang'))
                 return movie_name, year, None
-        indi++
     else:
         return None, None, None
 
