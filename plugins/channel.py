@@ -26,26 +26,26 @@ async def media(bot, message):
     media.caption = message.caption
     text = await save_file(media)
     if text is not None:
-        movie_name, year, languages = await add_chnl_message(text)
+        mv_naam, year, languages = await add_chnl_message(text)
         logger.info(
-                f'{movie_name} {year} - STEP 2'
+                f'{mv_naam} {year} - STEP 2'
             )
-        if movie_name is not None:
+        if mv_naam is not None:
             languages_str = " ".join(languages) if languages else None
             logger.info(
                 f'{languages_str} - STEP 3'
             )
             if year is not None:
-                caption = f"<b>#MovieUpdate:\n🧿 <u>𝚃𝙸𝚃𝙻𝙴</u> : <code>{movie_name}</code>\n📆 <u>𝚁𝙴𝙻𝙴𝙰𝚂𝙴</u> : {year}\n"
+                caption = f"<b>#MovieUpdate:\n🧿 <u>𝚃𝙸𝚃𝙻𝙴</u> : <code>{mv_naam}</code>\n📆 <u>𝚁𝙴𝙻𝙴𝙰𝚂𝙴</u> : {year}\n"
             else:
-                caption = f"<b>#MovieUpdate:\n🧿 <u>𝚃𝙸𝚃𝙻𝙴</u> : <code>{movie_name}</code>\n"
+                caption = f"<b>#MovieUpdate:\n🧿 <u>𝚃𝙸𝚃𝙻𝙴</u> : <code>{mv_naam}</code>\n"
             if languages_str:
                 caption += f"🎙️<u>𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴</u> : {languages_str}\n"
             caption += "\nCopy & Paste In Group To Search\n---»<a href=https://t.me/isaimini_updates/110> ᴍᴏᴠɪᴇ sᴇᴀʀᴄʜɪɴɢ ɢʀᴏᴜᴘ ʟɪɴᴋs </a>«---</b>"
             logger.info(
                 f'{caption} - STEP 4'
             )
-            search = f"{movie_name} {year}" if year is not None else movie_name
+            search = f"{mv_naam} {year}" if year is not None else mv_naam
             logger.info(
                 f'{search} - STEP 5'
             )
