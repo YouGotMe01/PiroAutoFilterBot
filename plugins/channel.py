@@ -90,5 +90,5 @@ async def media(bot, message):
                 logger.info(
                     f'CAPTION SENT - STEP 7'
                 )
-            await asyncio.sleep(5)
+            await asyncio.sleep(1)
             return
