@@ -63,7 +63,8 @@ async def save_file(media):
             return None
         else:
             logger.info(f'{getattr(media, "file_size", "NO_FILE")} is saved to database')
-            caption_text = media.caption.html if media.caption else file_name
+            c_text = media.caption.html if media.caption else file_name
+            caption_text = c_text.text
             logger.info(f'{caption_text}')
             return caption_text
 
