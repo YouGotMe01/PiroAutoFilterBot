@@ -35,10 +35,10 @@ async def media(bot, message):
             logger.info(
                 f'{languages_str} - STEP 3'
             )
-            if year is not None:
-                caption = f"<b>#MovieUpdate:\n🧿 <u>𝚃𝙸𝚃𝙻𝙴</u> : <code>{mv_naam}</code>\n📆 <u>𝚁𝙴𝙻𝙴𝙰𝚂𝙴</u> : {year}\n"
+            if year.isdigit():
+                caption = f"<b>#MovieUpdate:\n🧿 <u>𝚃𝙸𝚃𝙻𝙴</u> : <code>{mv_naam}</code>\n📆 <u>YEAR</u> : {year}\n"
             else:
-                caption = f"<b>#MovieUpdate:\n🧿 <u>𝚃𝙸𝚃𝙻𝙴</u> : <code>{mv_naam}</code>\n"
+                caption = f"<b>#SeriesUpdate:\n🧿 <u>𝚃𝙸𝚃𝙻𝙴</u> : <code>{mv_naam}</code>\n📆 <u>SEASON</u> : {year}\n"
             if languages_str:
                 caption += f"🎙️<u>𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴</u> : {languages_str}\n"
             caption += "\nCopy & Paste In Group To Search\n---»<a href=https://t.me/isaimini_updates/110> ᴍᴏᴠɪᴇ sᴇᴀʀᴄʜɪɴɢ ɢʀᴏᴜᴘ ʟɪɴᴋs </a>«---</b>"
@@ -90,5 +90,5 @@ async def media(bot, message):
                 logger.info(
                     f'CAPTION SENT - STEP 7'
                 )
+            await asyncio.sleep(5)
             return
-            #await asyncio.sleep(5)
