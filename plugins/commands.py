@@ -134,6 +134,9 @@ async def start(client, message):
         cap = f"<b>😻 𝖧𝖾𝗅𝗅𝗈 {message.from_user.mention}\n📂 𝖸𝗈𝗎𝗋 𝖥𝗂𝗅𝖾𝗌 𝖠𝗋𝖾 𝖱𝖾𝖺𝖽𝗒\n\n</b>♨️ 𝐁𝐫𝐨𝐮𝐠𝐡𝐭 𝐓𝐨 𝐘𝐨𝐮 𝐁𝐲:- <a href=https://t.me/isaimini_updates>❤️ 𝗜𝘀𝗮𝗶𝗺𝗶𝗻𝗶 𝗣𝗿𝗶𝗺𝗲 ❤️</a></b>"
         pre = 'file'
         files, offset, total_results = await get_search_results(message.chat.id , mov_name.lower(), offset=0, filter=True)
+        stick = await message.reply_sticker(sticker="CAACAgUAAx0CZjyOqQACMCpl_EX_Ak6ilEi7sdys1ec9ozSwvQAC3AIAAq9qOVVmHNMuomHDLB4E")
+        await asyncio.sleep(1)
+        await stick.delete()
         if not files:
             return
         btn = [
