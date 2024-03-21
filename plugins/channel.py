@@ -46,6 +46,7 @@ async def media(bot, message):
                 f'{caption} - STEP 4'
             )
             search = f"{mv_naam} {year}" if year is not None else mv_naam
+            search = search.replace(".", " ")
             logger.info(
                 f'{search} - STEP 5'
             )
@@ -90,4 +91,5 @@ async def media(bot, message):
                 logger.info(
                     f'CAPTION SENT - STEP 7'
                 )
+            await asyncio.sleep(5)
             return
