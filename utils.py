@@ -439,8 +439,9 @@ def remove_escapes(text: str) -> str:
 
 async def add_chnl_message(file_name):
     pattern = [
-        (r'^([\w\s-]+)\sS\d{2}\s?(E(P|p)|E)\d{2}\s'),
-        (r'^(.*?)\s(\d{4})\s.*?(\.mkv)$')]
+        (r'^(.*?)\s(\d{4})\s.*?(\.mkv)$'),
+        (r'^([\w\s-]+)\sS\d{2}\s?(E(P|p)|E)\d{2}\s')
+    ]
     
     for pat in pattern:
         match = re.match(pat, file_name)
