@@ -1327,11 +1327,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     
 async def auto_filter(client, msg, spoll=False):
-    stick = await msg.reply_sticker(sticker="CAACAgUAAx0CZjyOqQACMCpl_EX_Ak6ilEi7sdys1ec9ozSwvQAC3AIAAq9qOVVmHNMuomHDLB4E")
     #await asyncio.sleep(0.5)
     reqstr1 = msg.from_user.id if msg.from_user else 0
     reqstr = await client.get_users(reqstr1)
     if not spoll:
+        stick = await msg.reply_sticker(sticker="CAACAgUAAx0CZjyOqQACMCpl_EX_Ak6ilEi7sdys1ec9ozSwvQAC3AIAAq9qOVVmHNMuomHDLB4E")
         message = msg
         settings = await get_settings(message.chat.id)
         if message.text.startswith("/"): return await stick.delete() #ignore commands
@@ -1518,7 +1518,8 @@ async def auto_filter(client, msg, spoll=False):
         cap = f"<b>😻 𝖧𝖾𝗅𝗅𝗈 {message.from_user.mention}\n📂 𝖸𝗈𝗎𝗋 𝖥𝗂𝗅𝖾𝗌 𝖠𝗋𝖾 𝖱𝖾𝖺𝖽𝗒\n\n</b>♨️ 𝐁𝐫𝐨𝐮𝐠𝐡𝐭 𝐓𝐨 𝐘𝐨𝐮 𝐁𝐲:- <a href=https://t.me/isaimini_updates>❤️ 𝗜𝘀𝗮𝗶𝗺𝗶𝗻𝗶 𝗣𝗿𝗶𝗺𝗲 ❤️</a></b>"
     if imdb and imdb.get('poster'):
         try:
-            await stick.delete()
+            if not spoll:
+                await stick.delete()
             hehe = await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
             try:
                 if settings['auto_delete']:
@@ -1534,7 +1535,8 @@ async def auto_filter(client, msg, spoll=False):
                     await hehe.delete()
                     await message.delete()
         except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
-            await stick.delete()
+            if not spoll:
+                await stick.delete()
             pic = imdb.get('poster')
             poster = pic.replace('.jpg', "._V1_UX360.jpg")
             hmm = await message.reply_photo(photo=poster, caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
@@ -1552,7 +1554,8 @@ async def auto_filter(client, msg, spoll=False):
                     await hmm.delete()
                     await message.delete()
         except Exception as e:
-            await stick.delete()
+            if not spoll:
+                await stick.delete()
             logger.exception(e)
             fek = await message.reply_photo(photo=NOR_IMG, caption=cap, reply_markup=InlineKeyboardMarkup(btn))
             try:
@@ -1569,7 +1572,8 @@ async def auto_filter(client, msg, spoll=False):
                     await fek.delete()
                     await message.delete()
     else:
-        await stick.delete()
+        if not spoll:
+                await stick.delete()
         fuk = await message.reply_photo(photo=NOR_IMG, caption=cap, reply_markup=InlineKeyboardMarkup(btn))
         try:
             if settings['auto_delete']:
@@ -1585,7 +1589,6 @@ async def auto_filter(client, msg, spoll=False):
                 await fuk.delete()
                 await message.delete()
     if spoll:
-        await stick.delete()
         await msg.message.delete()
 
 async def advantage_spell_chok(client, msg):
