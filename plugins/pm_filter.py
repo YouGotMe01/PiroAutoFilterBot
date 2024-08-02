@@ -1650,9 +1650,8 @@ async def advantage_spell_chok(client, message):
     buttons = []
     for movie in movielist:
         callback_data = f"spolling#{user}#{movie.strip()}"
-        if len(callback_data) > 64:
-            callback_data = callback_data[:64]  # Trim to fit the limit
-        buttons.append([InlineKeyboardButton(text=movie.strip(), callback_data=callback_data)])
+        if len(callback_data) < 64:
+            buttons.append([InlineKeyboardButton(text=movie.strip(), callback_data=callback_data)])
 
     buttons.append([InlineKeyboardButton("🚫 ᴄʟᴏsᴇ 🚫", callback_data="close_data")])
 
