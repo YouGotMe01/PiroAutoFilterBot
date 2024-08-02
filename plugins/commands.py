@@ -385,7 +385,7 @@ async def telegraph(bot, message):
         os.remove(media)
     except:
         pass
-    tlink = https://telegra.ph/{response[0]}
+    tlink = f"https://telegra.ph/{response[0]}"
     
     await text.edit_text(f"<b>❤️ ʏᴏᴜʀ ᴛᴇʟᴇɢʀᴀᴘʜ ʟɪɴᴋ ᴄᴏᴍᴘʟᴇᴛᴇᴅ 👇</b>\n\n<code>https://telegra.ph/{response[0]}</code></b>")
     
