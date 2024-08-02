@@ -1628,8 +1628,6 @@ async def advantage_spell_chok(client, message):
 
     user = message.from_user.id if message.from_user else 0
     movielist = []
-    if len(movies) > 5:
-        movies = movies[:5]
     for mov in movies:
         movielist.append(mov.get('title'))
     movielist = list(dict.fromkeys(movielist))
